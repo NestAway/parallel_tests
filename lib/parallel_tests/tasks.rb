@@ -147,7 +147,7 @@ namespace :parallel do
   ['test', 'spec', 'features', 'features-spinach'].each do |type|
     desc "Run #{type} in parallel with parallel:#{type}[num_cpus]"
     task type, [:count, :pattern, :options] do |t, args|
-      ParallelTests::Tasks.check_for_pending_migrations
+      #ParallelTests::Tasks.check_for_pending_migrations
 
       $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..'))
       require "parallel_tests"
