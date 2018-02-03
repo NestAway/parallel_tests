@@ -53,7 +53,7 @@ module ParallelTests
       def check_for_pending_migrations
         ["db:abort_if_pending_migrations", "app:db:abort_if_pending_migrations"].each do |abort_migrations|
           if Rake::Task.task_defined?(abort_migrations)
-            Rake::Task[abort_migrations].invoke
+            Rake::Task["#{abort_migrations} RAILS_ENV=#{ParallelTests::Tasks.rails_env}"].invoke
             break
           end
         end
